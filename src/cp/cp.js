@@ -7,11 +7,11 @@ const dirnNme = dirname(fileName);
 const scriptSource = join(dirnNme, 'files', 'script.js');
 
 const spawnChildProcess = async (args) => {
-    const child = spawn('node', [scriptSource, ...args]);
+    const childProcess = spawn('node', [scriptSource, ...args]);
 
-    process.stdin.pipe(child.stdin);
+    process.stdin.pipe(childProcess.stdin);
 
-    child.stdout.on('data', (data)=>{
+    childProcess.stdout.on('data', (data)=>{
         console.log(data.toString());
     })
 };
